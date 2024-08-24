@@ -1,9 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function ResultsPage({ examResult }) {
   const formatDate = (date) => {
     return new Date(date).toLocaleString();
   };
+   
+
+  const handleGoback=()=>
+  {
+    window.location.reload();
+  }
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -39,6 +46,15 @@ function ResultsPage({ examResult }) {
           <strong>Submission Time:</strong> {formatDate(examResult.endTime)}
         </p>
       </div>
+      <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-6 py-3 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors duration-300"
+                    onClick={handleGoback}
+                  >
+                    Go Back
+       </motion.button>
+
     </div>
   );
 }
